@@ -66,7 +66,7 @@ void draw_mandelbrot(int size_x, int size_y, struct Complex top_left, struct Com
     double step_x_per_pixel = (bottom_right.real - top_left.real)/size_x;
     double step_y_per_pixel = (bottom_right.imag - top_left.imag)/size_y;
 
-    int max_iterations = 20;
+    int max_iterations = 2000;
 
     struct Complex current;
     char pixel;
@@ -92,20 +92,21 @@ int main(){
     struct Complex bottom_right = {2, -1.5};
     
     
-    double pan_amount = 0.1;
     double zoom_amount = 0.8; // When zooming in, the new view is width*zoom_amount, by height*zoom_amount
-
+    
     char user_input;
     
     while (exit_program == 0) {
-
+        
         draw_mandelbrot(100, 112/2, top_left, bottom_right, 2);
-
+        
         printf("Enter N/E/W/S\n");
         scanf(" %c", &user_input);
         
         // Make lowercase to allow for for both upper and lowercase
         user_input = tolower((unsigned char)user_input);
+        
+        double pan_amount = 0.1*(bottom_right.real-top_left.real); // Pan amount is 10% of the current view width
 
         switch (user_input){
             case 'n':
