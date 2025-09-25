@@ -1,8 +1,5 @@
-// 22-07-11
-
 #include <stdio.h>
 #include <ctype.h>
-
 struct Complex{
     double real;
     double imag;
@@ -44,7 +41,7 @@ const char* get_display_complex(struct Complex a){
 }
 
 int is_mandelbrot(struct Complex c, int iterations, int z_power){
-    struct Complex z = {0,0};
+    struct Complex z = {0, 0};
     struct Complex a;
     for (int i = 0; i < iterations; i++){
         a = z;
@@ -90,7 +87,6 @@ int main(){
     
     struct Complex top_left = {-2, 2.5};
     struct Complex bottom_right = {2, -1.5};
-    
     
     double zoom_amount = 0.8; // When zooming in, the new view is width*zoom_amount, by height*zoom_amount
     
@@ -140,6 +136,5 @@ int main(){
                 break;
         }
     }
-
     return 0;
 }
