@@ -100,7 +100,7 @@ int main(){
         
         draw_mandelbrot(100, 112/2, top_left, bottom_right, 2);
         
-        printf("Enter N/E/W/S\n");
+        printf("Enter N/E/W/S to pan, or +/- to zoom\n");
         scanf(" %c", &user_input);
         
         // Make lowercase to allow for for both upper and lowercase
