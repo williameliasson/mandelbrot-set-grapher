@@ -15,6 +15,18 @@ struct Complex add_complex(struct Complex a, struct Complex b){
     return result;
 }
 
+void zoom_complex_corners(struct Complex *top_left, struct Complex *bottom_right, int sign, double zoom_amount){
+    // How much to move each of the two corners
+        double real_offset = ((bottom_right->real -  top_left->real)*(1-zoom_amount))     /2;
+        double imag_offset = ((top_left->imag     -  bottom_right->imag)*(1-zoom_amount)) /2;
+
+        struct Complex top_left_offset = {real_offset*sign, -imag_offset*sign}; // Move corner towards right and down
+        struct Complex bottom_right_offset = {-real_offset*sign, imag_offset*sign}; // Move corner towards left and up
+
+        *top_left = add_complex(*top_left, top_left_offset);
+        *bottom_right = add_complex(*bottom_right, bottom_right_offset);
+}
+
 struct Complex multiply_complex(struct Complex a, struct Complex b){
     struct Complex result = {(a.real*b.real - a.imag*b.imag), (a.real*b.imag + a.imag*b.real)};
     return result;
@@ -119,15 +131,7 @@ int main(){
             case '+':
                 // Zoom in
 
-                // How much to move each of the two corners
-                double real_offset = ((bottom_right.real-top_left.real)*(1-zoom_amount))/2;
-                double imag_offset = ((top_left.imag-bottom_right.imag)*(1-zoom_amount))/2;
-
-                struct Complex top_left_offset = {real_offset, -imag_offset}; // Move corner towards right and down
-                struct Complex bottom_right_offset = {-real_offset, imag_offset}; // Move corner towards left and up
-
-                top_left = add_complex(top_left, top_left_offset);
-                bottom_right = add_complex(bottom_right, bottom_right_offset);
+                zoom_complex_corners(&top_left, &bottom_right, 1, zoom_amount);
 
                 break;
             case '-':
