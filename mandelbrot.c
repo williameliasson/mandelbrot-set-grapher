@@ -1,6 +1,7 @@
 // 22-07-11
 
 #include <stdio.h>
+#include <ctype.h>
 
 struct Complex{
     double real;
@@ -89,29 +90,32 @@ int main(){
 
         printf("Enter N/E/W/S\n");
         scanf(" %c", &user_input);
+        
+        // Make lowercase to allow for for both upper and lowercase
+        user_input = tolower((unsigned char)user_input);
+
         switch (user_input){
-            case 'N':
+            case 'n':
                 // North
                 top_left.imag += pan_amount;
                 bottom_right.imag += pan_amount;
                 break;
-            case 'E':
+            case 'e':
                 // East
                 top_left.real += pan_amount;
                 bottom_right.real += pan_amount;
                 break;
-            case 'W':
+            case 'w':
                 // West
                 top_left.real -= pan_amount;
                 bottom_right.real -= pan_amount;
                 break;
-            case 'S':
+            case 's':
                 // South
                 top_left.imag -= pan_amount;
                 bottom_right.imag -= pan_amount;
                 break;
         }
-        
     }
 
     return 0;
