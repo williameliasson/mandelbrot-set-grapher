@@ -130,12 +130,12 @@ int main(){
                 break;
             case '+':
                 // Zoom in
-
                 zoom_complex_corners(&top_left, &bottom_right, 1, zoom_amount);
-
+                
                 break;
             case '-':
                 // Zoom out
+                zoom_complex_corners(&top_left, &bottom_right, -1, zoom_amount);
                 break;
         }
     }
