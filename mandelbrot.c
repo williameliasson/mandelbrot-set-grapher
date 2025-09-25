@@ -115,6 +115,12 @@ int main(){
                 top_left.imag -= pan_amount;
                 bottom_right.imag -= pan_amount;
                 break;
+            case '+':
+                // Zoom in
+                break;
+            case '-':
+                // Zoom out
+                break;
         }
     }
 
