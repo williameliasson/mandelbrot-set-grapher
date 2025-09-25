@@ -73,10 +73,46 @@ void draw_mandelbrot(int size_x, int size_y, struct Complex top_left, struct Com
 }
 
 int main(){
-
+    int exit_program = 0;
+    
     struct Complex top_left = {-2, 2.5};
     struct Complex bottom_right = {2, -1.5};
+    
+    
+    double pan_amount = 0.1;
 
-    draw_mandelbrot(100, 112/2, top_left, bottom_right, 2);
+    char user_input;
+    
+    while (exit_program == 0) {
+
+        draw_mandelbrot(100, 112/2, top_left, bottom_right, 2);
+
+        printf("Enter N/E/W/S\n");
+        scanf(" %c", &user_input);
+        switch (user_input){
+            case 'N':
+                // North
+                top_left.imag += pan_amount;
+                bottom_right.imag += pan_amount;
+                break;
+            case 'E':
+                // East
+                top_left.real += pan_amount;
+                bottom_right.real += pan_amount;
+                break;
+            case 'W':
+                // West
+                top_left.real -= pan_amount;
+                bottom_right.real -= pan_amount;
+                break;
+            case 'S':
+                // South
+                top_left.imag -= pan_amount;
+                bottom_right.imag -= pan_amount;
+                break;
+        }
+        
+    }
+
     return 0;
 }
