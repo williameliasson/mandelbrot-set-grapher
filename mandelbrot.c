@@ -81,6 +81,7 @@ int main(){
     
     
     double pan_amount = 0.1;
+    double zoom_amount = 0.8; // When zooming in, the new view is width*zoom_amount, by height*zoom_amount
 
     char user_input;
     
@@ -117,6 +118,17 @@ int main(){
                 break;
             case '+':
                 // Zoom in
+
+                // How much to move each of the two corners
+                double real_offset = ((bottom_right.real-top_left.real)*(1-zoom_amount))/2;
+                double imag_offset = ((top_left.imag-bottom_right.imag)*(1-zoom_amount))/2;
+
+                struct Complex top_left_offset = {real_offset, -imag_offset}; // Move corner towards right and down
+                struct Complex bottom_right_offset = {-real_offset, imag_offset}; // Move corner towards left and up
+
+                top_left = add_complex(top_left, top_left_offset);
+                bottom_right = add_complex(bottom_right, bottom_right_offset);
+
                 break;
             case '-':
                 // Zoom out
