@@ -11,6 +11,7 @@ Use characters N/E/W/S to go a certain direction (N for North, etc) and + or - t
 The Mandelbrot set will be displayed for that area.
 
 ## Example result
+```
                                              #  #  #################  ################### ###       
                                              # #  #############  ### ## ################## ###    ##
                                             #     ######## ## # ######  ########## ######     #     
@@ -67,3 +68,4 @@ The Mandelbrot set will be displayed for that area.
 ######### ##        ## ######## ##  ###  #########    #  ######   # ## ####################         
 ##### #         ### #  #  ####   ###    ###########  # ##  # #      #   # ########## ###  #         
 ### ## #  ## ##  ####     ####  # #       ########   ####   #   #    ########### ###       ##     ##
+```
