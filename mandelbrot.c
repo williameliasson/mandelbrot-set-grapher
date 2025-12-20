@@ -96,7 +96,7 @@ int main(){
         
         draw_mandelbrot(100, 112/2, top_left, bottom_right, 2);
         
-        printf("Enter N/E/W/S to pan, or +/- to zoom\n");
+        printf("Enter W/A/S/D to pan, or +/- to zoom\n");
         scanf(" %c", &user_input);
         
         // Make lowercase to allow for for both upper and lowercase
@@ -105,17 +105,17 @@ int main(){
         double pan_amount = 0.1*(bottom_right.real-top_left.real); // Pan amount is 10% of the current view width
 
         switch (user_input){
-            case 'n':
+            case 'w':
                 // North
                 top_left.imag += pan_amount;
                 bottom_right.imag += pan_amount;
                 break;
-            case 'e':
+            case 'd':
                 // East
                 top_left.real += pan_amount;
                 bottom_right.real += pan_amount;
                 break;
-            case 'w':
+            case 'a':
                 // West
                 top_left.real -= pan_amount;
                 bottom_right.real -= pan_amount;
